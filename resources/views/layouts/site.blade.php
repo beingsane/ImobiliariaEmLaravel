@@ -13,12 +13,14 @@
 
 </head>
 <body id="app-layout">
+
 	<header>
 		@include('layouts._site._nav')
 	</header>
 
-
-	@yield('content')
+	<main>
+		@yield('content')
+	</main>
 
 	<footer class="page-footer blue">
 		<div class="container">
@@ -30,17 +32,17 @@
 				<div class="col l4 offset-l2 s12">
 					<h5 class="white-text">Menu Rápido</h5>
 					<ul>
-						<li><a class="grey-text text-lighten-3" href="#!">Home</a></li>
-						<li><a class="grey-text text-lighten-3" href="#!">Sobre</a></li>
-						<li><a class="grey-text text-lighten-3" href="#!">Contato</a></li>
+						<li><a class="grey-text text-lighten-3" href="{{ route('site.home') }}">Home</a></li>
+						<li><a class="grey-text text-lighten-3" href="{{ route('site.sobre') }}">Sobre</a></li>
+						<li><a class="grey-text text-lighten-3" href="{{ route('site.contato') }}">Contato</a></li>
 					</ul>
 				</div>
 			</div>
 		</div>
 		<div class="footer-copyright">
 			<div class="container">
-				© 2018 Sandro Torres
-				<a class="grey-text text-lighten-4 right" href="#!">Mais Informações</a>
+				© 2018 <a class="white-text" href="http://sandrotorres.com.br/">Sandro Torres</a>
+				<a class="grey-text text-lighten-4 right" href="{{ route('site.contato') }}">Mais Informações</a>
 			</div>
 		</div>
 	</footer>

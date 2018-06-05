@@ -14,26 +14,53 @@
 </head>
 <body id="app-layout">
 
-    <nav>
-        <div class="nav-wrapper blue">
-            <div class="container">
-              <a href="#!" class="brand-logo">Imobiliária</a>
-              <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-              <ul class="right hide-on-med-and-down">
-                <li><a href="#">Home</a></li>
-            </ul>
-            <ul class="side-nav" id="mobile-demo">
-                <li><a href="#">Home</a></li>
-            </ul>
+    @include('layouts._admin._nav')
+
+    <main>
+
+        @if(Session::has('mensagem'))
+        <div class="container">
+            <div class="row">
+                <div class="card {{ Session::get('mensagem')['class'] }}">
+                    <div align="center" class="card-content">
+                        {{ Session::get('mensagem')['msg'] }}
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</nav>
+        @endif
 
-@yield('content')
+        @yield('content')
 
-<script src="{{asset('lib/jquery/dist/jquery.js')}}"></script>
-<script src="{{asset('lib/materialize/dist/js/materialize.js')}}"></script>
-<script src="{{asset('js/init.js')}}"></script>
+    </main>
+
+    <footer class="page-footer blue">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">SisAdmin</h5>
+                    <p>Sistema de Administração</p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Menu Rápido</h5>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" href="{{ route('admin.principal') }}">Início</a></li>
+                        <li><a class="grey-text text-lighten-3" href="{{ route('site.home') }}">Site</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2018 SisAdmin
+                <a class="white-text right" href="http://sandrotorres.com.br/">Sandro Torres</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{asset('lib/jquery/dist/jquery.js')}}"></script>
+    <script src="{{asset('lib/materialize/dist/js/materialize.js')}}"></script>
+    <script src="{{asset('js/init.js')}}"></script>
 
 </body>
 </html>

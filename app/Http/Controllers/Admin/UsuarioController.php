@@ -1,12 +1,10 @@
 <?php
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Auth;
 use App\User;
+use Auth;
+use Illuminate\Http\Request;
 
 class UsuarioController extends Controller
 {
@@ -51,6 +49,40 @@ class UsuarioController extends Controller
         \Session::flash('mensagem', ['msg' => 'Registro realizado com sucesso!', 'class' => 'green white-text']);
 
         return redirect()->route('admin.usuarios');
+    }
+
+    public function editar($id)
+    {
+        $usuario = User::find($id);
+        return view('admin.usuarios.editar', compact('usuario'));
+    }
+
+    public function atualizar(Request $request, $id)
+    {
+        $usuario = User::find($id);
+        $dados = $request->all();
+
+        if (isset($dados['password']) && strlen($dados['password']) > 5) {
+            $dados['password'] = bcrypt($dados['password']);
+        } else {
+            unset($dados['password']);
+        }
+
+        $usuario->update($dados);
+
+        \Session::flash('mensagem', ['msg' => 'Registro atualizado com sucesso!', 'class' => 'green white-text']);
+
+        return redirect()->route('admin.usuarios');
+
+    }
+
+    public function deletar($id)
+    {
+        User::find($id)->delete();
+
+        \Session::flash('mensagem', ['msg' => 'Registro deletado com sucesso!', 'class' => 'green white-text']);
+        return redirect()->route('admin.usuarios');
+
     }
 
 }

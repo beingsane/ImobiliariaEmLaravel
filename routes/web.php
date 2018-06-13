@@ -16,8 +16,6 @@ Route::get('/imovel/{id}/{titulo?}', ['as' => 'site.imovel', function () {
     return view('site.imovel');
 }]);
 
-
-
 Route::get('/admin/login', ['as' => 'admin.login', function () {
     return view('admin.login.index');
 }]);
@@ -33,9 +31,13 @@ Route::group(['middleware' => 'auth'], function () {
     }]);
 
     Route::get('/admin/usuarios', ['as' => 'admin.usuarios', 'uses' => 'Admin\UsuarioController@index']);
+
     Route::get('/admin/usuarios/adicionar', ['as' => 'admin.usuarios.adicionar', 'uses' => 'Admin\UsuarioController@adicionar']);
     Route::post('/admin/usuarios/salvar', ['as' => 'admin.usuarios.salvar', 'uses' => 'Admin\UsuarioController@salvar']);
-    Route::get('/admin/usuarios/editar', ['as' => 'admin.usuarios.editar', 'uses' => 'Admin\UsuarioController@editar']);
-    Route::put('/admin/usuarios/atualizar', ['as' => 'admin.usuarios.atualizar', 'uses' => 'Admin\UsuarioController@atualizar']);
+
+    Route::get('/admin/usuarios/editar/{id}', ['as' => 'admin.usuarios.editar', 'uses' => 'Admin\UsuarioController@editar']);
+    Route::put('/admin/usuarios/atualizar/{id}', ['as' => 'admin.usuarios.atualizar', 'uses' => 'Admin\UsuarioController@atualizar']);
+
+    Route::get('/admin/usuarios/deletar/{id}', ['as' => 'admin.usuarios.deletar', 'uses' => 'Admin\UsuarioController@deletar']);
 
 });

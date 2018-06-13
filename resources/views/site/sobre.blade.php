@@ -11,7 +11,7 @@
 			<img class="responsive-img" src="{{ asset('img/modelo_img_home.jpg') }}"></img>
 		</div>
 		<div class="col s12 m6">
-			<h4>A Empresa</h4>
+			<h4>{{ $pagina->titulo }}</h4>
 			<blockquote>Descrição breve sobre a empresa.</blockquote>
 			<p>Texto maior sobre a empresa.</p>
 		</div>

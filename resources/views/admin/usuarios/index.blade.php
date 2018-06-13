@@ -41,5 +41,8 @@
             </tbody>
         </table>
     </div>
+    <div class="row">
+        <a href="{{ route('admin.usuarios.adicionar') }}" class="btn blue">Adicionar</a>
+    </div>
 </div>
 @endsection

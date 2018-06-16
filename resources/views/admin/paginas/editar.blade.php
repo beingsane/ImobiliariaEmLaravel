@@ -17,7 +17,7 @@
     </div>
 
     <div class="row">
-        <form action="{{ route('admin.paginas.atualizar', $pagina->id) }}" method="post">
+        <form action="{{ route('admin.paginas.atualizar', $pagina->id) }}" method="post" enctype="multipart/form-data">
 
 
             {{csrf_field()}}

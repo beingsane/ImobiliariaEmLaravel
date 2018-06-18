@@ -12,6 +12,8 @@ class PaginasSeeds extends Seeder
      */
     public function run()
     {
+        
+        // Página Sobre
         $existe = Pagina::where('tipo', '=', 'sobre')->count();
 
         if ($existe) {
@@ -28,6 +30,27 @@ class PaginasSeeds extends Seeder
         $paginaSobre->tipo = "sobre";
 
         $paginaSobre->save();
+        echo "Página sobre criada com sucesso!";
+        
+
+        // Página contato
+        $existe = Pagina::where('tipo', '=', 'contato')->count();
+
+        if ($existe) {
+            $paginaContato = Pagina::where('tipo', '=', 'contato')->first();
+        } else {
+            $paginaContato = new Pagina();
+        }
+
+        $paginaContato->titulo = "Entre em contato";
+        $paginaContato->descricao = "Preencha o formulário";
+        $paginaContato->texto = "Contato";
+        $paginaContato->imagem = "img/modelo_img_home.jpg";
+        $paginaContato->email = "sj.torres@live.com";
+        $paginaContato->tipo = "contato";
+
+        $paginaContato->save();
+        echo "Página Contato criada com sucesso!";
 
     }
 }

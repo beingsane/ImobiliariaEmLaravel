@@ -15,6 +15,6 @@ class Imovel extends Model
 
     public function Cidade()
     {
-        return $this->belongTo('App\Cidade', 'cidade_id');
+        return $this->belongsTo('App\Cidade', 'cidade_id');
     }
 }

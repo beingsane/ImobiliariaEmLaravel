@@ -39,7 +39,7 @@
                     <td>{{ $registro->cidade->nome }}</td>
                     <td>R$ {{ number_format($registro->valor, 2, ",", ".") }}</td>
                     <td><img width="100" src="{{ asset($registro->imagem) }}"></td>
-                    <td>{{ $registro->publicado }}</td>
+                    <td>{{ $registro->publicar }}</td>
                     <td>
                         <a class="btn orange" href="{{ route('admin.imoveis.editar', $registro->id) }}">Editar</a>
                         <a class="btn red" href="javascript: if (confirm('Apagar esse registro?')){ window.location.href = '{{ route('admin.imoveis.deletar', $registro->id) }}' }">Deletar</a>

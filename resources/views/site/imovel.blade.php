@@ -1,6 +1,4 @@
-@extends('layouts.site')
-
-@section('content')
+@extends('layouts.site') @section('content')
 
 <div class="container">
 	<div class="row section">
@@ -9,37 +7,19 @@
 	</div>
 	<div class="row section">
 		<div class="col s12 m8">
+		@if($imovel->galeria()->count())
 			<div class="row">
 				<div class="slider">
 					<ul class="slides">
+					@foreach($imovel->galeria as $imagem)
 						<li>
-							<img src="{{ asset('img/modelo_detalhe_1.jpg') }}" alt="Imagem">
-							<div class="caption center-align">
-								<h3>Título da imagem</h3>
-								<h5>Descrição do Slide</h5>
+							<img src="{{ asset($imagem->imagem) }}" alt="Imagem">
+							<div class="caption {{ $direcaoImagem[rand(0,2)] }}">
+								<h3>{{ $imagem->titulo }}</h3>
+								<h5>{{ $imagem->descricao }}</h5>
 							</div>
 						</li>
-						<li>
-							<img src="{{ asset('img/modelo_detalhe_2.jpg') }}" alt="Imagem">
-							<div class="caption left-align">
-								<h3>Título da imagem</h3>
-								<h5>Descrição do Slide</h5>
-							</div>
-						</li>
-						<li>
-							<img src="{{ asset('img/modelo_detalhe_3.jpg') }}" alt="Imagem">
-							<div class="caption right-align">
-								<h3>Título da imagem</h3>
-								<h5>Descrição do Slide</h5>
-							</div>
-						</li>
-						<li>
-							<img src="{{ asset('img/modelo_detalhe_4.jpg') }}" alt="Imagem">
-							<div class="caption left-align">
-								<h3>Título da imagem</h3>
-								<h5>Descrição do Slide</h5>
-							</div>
-						</li>
+					@endforeach	
 					</ul>
 				</div>
 			</div>
@@ -47,20 +27,43 @@
 				<button onclick="sliderPrev()" class="btn blue">Anterior</button>
 				<button onclick="sliderNext()" class="btn blue">Próximo</button>
 			</div>
+		@else
+			<img class="responsive-img" src="{{ asset($imovel->imagem) }}">
+		@endif
 		</div>
 		<div class="col s12 m4">
-			<h4>Título do Imóvel</h4>
-			<blockquote>Descrição breve sobre o Imóvel.</blockquote>
-			<p><b>Código:</b> 256</p>
-			<p><b>Status:</b> Vende</p>
-			<p><b>Tipo:</b> Alvenaria</p>
-			<p><b>Endereço:</b> Centro</p>
-			<p><b>Cep:</b> 87704090</p>
-			<p><b>Cidade:</b> Paranavaí</p>
-			<p><b>Valor:</b> R$ 200.000,00</p>
+			<h4>{{ $imovel->titulo }}</h4>
+			<blockquote>{{ $imovel->descricao }}</blockquote>
+			<p>
+				<b>Código:</b> {{ $imovel->id }}</p>
+			<p>
+				<b>Status:</b> {{ $imovel->status }}</p>
+			<p>
+				<b>Tipo:</b> {{ $imovel->tipo->titulo }}</p>
+			<p>
+				<b>Endereço:</b> {{ $imovel->endereco }}</p>
+			<p>
+				<b>Cep:</b> {{ $imovel->cep }}</p>
+			<p>
+				<b>Cidade:</b> {{ $imovel->cidade->nome }}</p>
+			<p>
+				<b>Valor:</b> R${{ number_format($imovel->valor, 2, ",", ".") }}</p>
 			<a class="btn deep-orange darken-1" href="{{ route('site.contato') }}">Entrar em contato</a>
 		</div>
 	</div>
+
+	<div class="row section">
+		<div class="col s12 m8">
+			<div class="video-container">
+				{!! $imovel->mapa !!}
+			</div>
+		</div>
+		<div class="col s12 m4">
+			<h4>Detalhes:</h4>
+			<p>{{ $imovel->detalhes }}</p>
+		</div>
+	</div>
+
 </div>
 
 @endsection

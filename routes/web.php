@@ -1,8 +1,7 @@
 <?php
 
-Route::get('/', ['as' => 'site.home', function () {
-    return view('site.home');
-}]);
+// Rotas SITE
+Route::get('/', ['as' => 'site.home', 'uses'=>'Site\HomeController@index']);
 
 Route::get('/sobre', ['as' => 'site.sobre', 'uses' => 'Site\PaginaController@sobre']);
 
@@ -10,10 +9,10 @@ Route::get('/contato', ['as' => 'site.contato', 'uses' => 'Site\PaginaController
 
 Route::post('/contato/enviar', ['as' => 'site.contato.enviar', 'uses' => 'Site\PaginaController@enviarContato']);
 
-Route::get('/imovel/{id}/{titulo?}', ['as' => 'site.imovel', function () {
-    return view('site.imovel');
-}]);
+Route::get('/imovel/{id}/{titulo?}', ['as' => 'site.imovel', 'uses'=>'Site\ImovelController@index']);
 
+
+// Rotas ADMIN
 Route::get('/admin/login', ['as' => 'admin.login', function () {
     return view('admin.login.index');
 }]);

@@ -71,4 +71,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/galerias/editar/{id}', ['as' => 'admin.galerias.editar', 'uses' => 'Admin\GaleriaController@editar']);
     Route::put('/admin/galerias/atualizar/{id}', ['as' => 'admin.galerias.atualizar', 'uses' => 'Admin\GaleriaController@atualizar']);
     Route::get('/admin/galerias/deletar/{id}', ['as' => 'admin.galerias.deletar', 'uses' => 'Admin\GaleriaController@deletar']);
+
+    // Rotas Slides
+    Route::get('/admin/slides', ['as' => 'admin.slides', 'uses' => 'Admin\SlideController@index']);
+    Route::get('/admin/slides/adicionar', ['as' => 'admin.slides.adicionar', 'uses' => 'Admin\SlideController@adicionar']);
+    Route::post('/admin/slides/salvar', ['as' => 'admin.slides.salvar', 'uses' => 'Admin\SlideController@salvar']);
+    Route::get('/admin/slides/editar/{id}', ['as' => 'admin.slides.editar', 'uses' => 'Admin\SlideController@editar']);
+    Route::put('/admin/slides/atualizar/{id}', ['as' => 'admin.slides.atualizar', 'uses' => 'Admin\SlideController@atualizar']);
+    Route::get('/admin/slides/deletar/{id}', ['as' => 'admin.slides.deletar', 'uses' => 'Admin\SlideController@deletar']);
 });

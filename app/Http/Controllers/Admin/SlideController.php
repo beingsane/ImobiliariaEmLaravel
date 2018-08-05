@@ -23,7 +23,7 @@ class SlideController extends Controller
     {
 
         if (Slide::count()) {
-            $slides = Slide::orderBy('ordem' . 'desc')->first();
+            $slides = Slide::orderBy('ordem' , 'desc')->first();
             $ordemAtual = $slides->ordem;
         } else {
             $ordemAtual = 0;

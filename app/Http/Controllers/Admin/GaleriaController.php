@@ -28,7 +28,7 @@ class GaleriaController extends Controller
         $dados = $request->all();
 
         if($imovel->galeria()->count()) {
-            $galeria = $imovel->galeria()->orderBy('ordem'. 'desc')->first();
+            $galeria = $imovel->galeria()->orderBy('ordem' , 'desc')->first();
             $ordemAtual = $galeria->ordem;
         }else {
             $ordemAtual = 0;

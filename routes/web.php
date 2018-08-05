@@ -11,6 +11,8 @@ Route::post('/contato/enviar', ['as' => 'site.contato.enviar', 'uses' => 'Site\P
 
 Route::get('/imovel/{id}/{titulo?}', ['as' => 'site.imovel', 'uses'=>'Site\ImovelController@index']);
 
+Route::get('/busca', ['as' => 'site.busca', 'uses'=>'Site\HomeController@busca']);
+
 
 // Rotas ADMIN
 Route::get('/admin/login', ['as' => 'admin.login', function () {

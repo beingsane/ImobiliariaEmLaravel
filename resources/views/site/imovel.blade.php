@@ -41,6 +41,8 @@
 			<p>
 				<b>Tipo:</b> {{ $imovel->tipo->titulo }}</p>
 			<p>
+				<b>Dormitórios:</b> {{ $imovel->dormitorios }}</p>
+			<p>
 				<b>Endereço:</b> {{ $imovel->endereco }}</p>
 			<p>
 				<b>Cep:</b> {{ $imovel->cep }}</p>
